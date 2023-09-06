@@ -1,36 +1,37 @@
 import math
 
-def mergeRecurse(list, startIndex, stopIndex):
-  diff = stopIndex - startIndex
+def merge_recurse(in_tuple, start_index, stop_index):
+  out_list = list(in_tuple)
+  diff = stop_index - start_index
   if diff <= 0:
-    return list
-  halfwayIndex = math.floor((stopIndex + startIndex)/2)
-  firstHalf = mergeRecurse(list.copy(), startIndex, halfwayIndex)
-  secondHalf = mergeRecurse(list.copy(), halfwayIndex+1, stopIndex)
-  newList = list.copy()
+    return out_list
+  halfway_index = math.floor((stop_index + start_index)/2)
+  first_half = merge_recurse(out_list.copy(), start_index, halfway_index)
+  second_half = merge_recurse(out_list.copy(), halfway_index+1, stop_index)
+  new_list = out_list.copy()
 
-  firstIndex = startIndex
-  secondIndex = halfwayIndex+1
-  for i in range(startIndex, stopIndex+1):
-    if firstIndex > halfwayIndex:
-      list[i] = secondHalf[secondIndex]
-      secondIndex += 1
+  first_index = start_index
+  second_index = halfway_index+1
+  for i in range(start_index, stop_index+1):
+    if first_index > halfway_index:
+      out_list[i] = second_half[second_index]
+      second_index += 1
       continue
-    if(secondIndex > stopIndex):
-      list[i] = firstHalf[firstIndex]
-      firstIndex += 1
+    if(second_index > stop_index):
+      out_list[i] = first_half[first_index]
+      first_index += 1
       continue
 
-    if firstHalf[firstIndex] < secondHalf[secondIndex]:
-      newList[i] = firstHalf[firstIndex]
-      firstIndex+=1
+    if first_half[first_index] < second_half[second_index]:
+      new_list[i] = first_half[first_index]
+      first_index+=1
     else:
-      newList[i] = secondHalf[secondIndex]
-      secondIndex+=1
-  return newList
+      new_list[i] = second_half[second_index]
+      second_index+=1
+  return new_list
 
-def mergeSort(list):
+def merge_sort(in_tuple):
   
-  result = mergeRecurse(list, 0, len(list)-1)
+  result = merge_recurse(in_tuple, 0, len(in_tuple)-1)
 
   return result

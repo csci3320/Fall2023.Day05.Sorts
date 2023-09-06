@@ -1,15 +1,13 @@
-def selectionSort(list):
-  ticks = 0
-  for i in range(len(list)):
+def selection_sort(in_tuple):
+  out_list = list(in_tuple)
+  for i in range(len(out_list)):
     lowestIndex = -1
     lowestValue = 1000000
-    for j in range(i, len(list)):
-      ticks += 1
-      if list[j] < lowestValue:
+    for j in range(i, len(out_list)):
+      if out_list[j] < lowestValue:
         lowestIndex = j
-        lowestValue = list[j]
-    temp = list[i]
-    list[i] = list[lowestIndex]
-    list[lowestIndex] = temp
-  print(ticks)
-  return list
+        lowestValue = out_list[j]
+    temp = out_list[i]
+    out_list[i] = out_list[lowestIndex]
+    out_list[lowestIndex] = temp
+  return out_list
