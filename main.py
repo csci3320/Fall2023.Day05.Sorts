@@ -5,7 +5,7 @@ from selection_sort import selection_sort
 from insertion_sort import insertion_sort
 from merge_sort import merge_sort
 
-sortAlgorithms = [bubble_sort, selection_sort, insertion_sort, merge_sort]
+sort_algorithms = [bubble_sort, selection_sort, insertion_sort, merge_sort]
 
 l1 = ()
 l2 = (1,)
@@ -26,19 +26,18 @@ lists.append([i for i in range(10)][::-1])
 print(lists)
 
 
-def isSorted(tuple):
+def is_sorted(tuple):
     for i in range(len(tuple)-1):
         if tuple[i+1] <= tuple[i]:
             return False
     return True
 
 
-for j in range(len(sortAlgorithms)):
-    algorithmName = str(sortAlgorithms[j].__name__)
-    for i in range(len(lists)):
-        result = sortAlgorithms[j](lists[i])
-        sorted = isSorted(result)
+for algorithm in sort_algorithms:
+    algorithm_name = str(algorithm.__name__)
+    for list in lists:
+        result = algorithm(list)
+        sorted = is_sorted(result)
         if not sorted:
-            print(str(sortAlgorithms[j].__name__) +
-                  " didn't sort correctly on: " + str(lists[i]))
+            print(str(algorithm.__name__) + " didn't sort correctly on: " + str(list))
             print("Incorrect result: " + str(result))
