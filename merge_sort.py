@@ -14,11 +14,11 @@ def merge_recurse(in_tuple, start_index, stop_index):
   second_index = halfway_index+1
   for i in range(start_index, stop_index+1):
     if first_index > halfway_index:
-      out_list[i] = second_half[second_index]
+      new_list[i] = second_half[second_index]
       second_index += 1
       continue
     if(second_index > stop_index):
-      out_list[i] = first_half[first_index]
+      new_list[i] = first_half[first_index]
       first_index += 1
       continue
 
