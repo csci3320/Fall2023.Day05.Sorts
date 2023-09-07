@@ -20,8 +20,9 @@ l8 = (3,2,1)
 
 lists = [l1, l2, l3, l4, l5, l6, l7, l8]
 
-lists.append([i for i in range(10)])
-lists.append([i for i in range(10)][::-1])
+for i in range(5,10):
+    lists.append([item for item in range(i)])
+    lists.append([item for item in range(i)][::-1])
 
 print(lists)
 
